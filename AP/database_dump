@@ -1,0 +1,53 @@
+CREATE DATABASE hackathon;
+USE hackathon;
+CREATE TABLE company(
+	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL
+)ENGINE=InnoDB DEFAULT CHARACTER SET=utf8;
+
+CREATE TABLE manager(
+	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    company_id INT NOT NULL,
+    name VARCHAR(120) NOT NULL,
+    cpf VARCHAR(11) NOT NULL,
+    cep VARCHAR(8) NOT NULL,
+    password VARCHAR(64) NOT NULL
+)ENGINE=InnoDB DEFAULT CHARACTER SET=utf8;
+
+CREATE TABLE function(
+	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    company_id INT NOT NULL,
+    name VARCHAR(80) NOT NULL,
+    sector VARCHAR(30) NOT NULL
+)ENGINE=InnoDB DEFAULT CHARACTER SET=utf8;
+
+CREATE TABLE employee(
+	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    company_id INT NOT NULL,
+    cpf VARCHAR(11) NOT NULL,
+    scale INT NOT NULL,
+    class INT NOT NULL,
+    function_id INT NOT NULL
+)ENGINE=InnoDB DEFAULT CHARACTER SET=utf8;
+
+CREATE TABLE service_order(
+	id INT NOT NULL PRIMARY KEY,
+    company_id INT NOT NULL,
+    name VARCHAR(80) NOT NULL,
+    description VARCHAR(150),
+    timestamp DATETIME,
+    answer_time DATETIME NOT NULL,
+    checkin_time DATETIME NOT NULL,
+    class INT NOT NULL
+)ENGINE=InnoDB DEFAULT CHARACTER SET=utf8;
+
+CREATE TABLE service_order_employee(
+	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    service_order_id INT NOT NULL,
+    employee_id INT NOT NULL,
+    is_accepted BOOLEAN NOT NULL DEFAULT true,
+    justify VARCHAR(150)
+)ENGINE=InnoDB DEFAULT CHARACTER SET=utf8;
+
+INSERT INTO company(name) VALUES("Brasil Terminal Portuário");
+INSERT INTO manager(company_id, name, cpf, cep, password) VALUES(1, "ADM Teste", "53192143321", "11321341", "teste");

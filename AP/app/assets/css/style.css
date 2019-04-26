@@ -1,0 +1,21 @@
+/* CSS DOCUMENT */
+
+*{
+    font-family: 'Quicksand', sans-serif;
+}
+
+body{
+    background-color: #efefef;
+}
+
+.section-header{
+    border-bottom: 1px solid #ddd;
+}
+
+.btn-round{
+    border-radius: 35px;
+}
+
+.table-hover tbody tr:hover{
+    cursor: pointer;
+}
